@@ -56,6 +56,10 @@ export const Contact: React.FC = () => {
     }
   };
 
+  const rawPhone = siteSettings.whatsapp_number || siteSettings.contact_phone || '919876543210';
+  const whatsappNumber = rawPhone.replace(/\D/g, '');
+  const whatsappMessage = encodeURIComponent(`Hi ${siteSettings.site_name || 'Bharat SEO'}, I would like to chat on WhatsApp regarding your services!`);
+
   return (
     <div className="bg-[#F8FAFC] text-slate-800 min-h-screen py-12 px-4 sm:px-6 lg:px-8 space-y-12">
       {/* Header */}
@@ -106,13 +110,14 @@ export const Contact: React.FC = () => {
 
             <div className="pt-2">
               <a
-                href={`https://wa.me/${siteSettings.whatsapp_number}?text=Hi%20Bharat%20SEO,%20I%20want%20to%20discuss%20a%20project!`}
+                href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm"
+                className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-md hover:shadow-lg active:scale-[0.99]"
+                id="contact-chat-on-whatsapp-btn"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Instant WhatsApp Strategy Session</span>
+                <MessageCircle className="w-5 h-5 fill-current" />
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>

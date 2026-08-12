@@ -120,9 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
         </div>
 
         <div class="pt-4 border-t border-blue-900">
-          <a href="https://wa.me/<?php echo sanitize($whatsapp_number); ?>" target="_blank" rel="noreferrer" class="w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
+          <?php $clean_wa = preg_replace('/[^0-9]/', '', !empty($whatsapp_number) ? $whatsapp_number : $contact_phone); ?>
+          <a href="https://wa.me/<?php echo $clean_wa; ?>?text=<?php echo urlencode('Hi ' . $site_name . ', I would like to chat on WhatsApp!'); ?>" target="_blank" rel="noreferrer" class="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 transition shadow-md" id="contact-chat-on-whatsapp-btn-php">
             <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Chat Directly on WhatsApp</span>
+            <span>Chat on WhatsApp</span>
           </a>
         </div>
       </div>
