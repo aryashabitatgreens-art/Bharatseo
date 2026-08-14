@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BharatSEO Platform — Next-Gen AI & Cloud Platform (Coming 2027)</title>
+  
+  <!-- Meta & SEO Tags -->
+  <meta name="description" content="BharatSEO is developing a next-generation AI and cloud platform for Indian businesses, creators, students, and startups. Public Launch 2027." />
+  <meta name="keywords" content="BharatSEO Platform, AI Resume Builder, AI Website Generator, SEO Intelligence Suite, Business Dashboard, Cloud Platform India" />
+  <link rel="canonical" href="https://bharatseo.site/platform" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              navy: '#1A237E',
+              dark: '#0a0e27',
+              accent: '#FF9933',
+              green: '#138808',
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.8' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom refined scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .dot-pattern {
+      background-image: radial-gradient(rgba(26, 35, 126, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-[#FF9933]/20 selection:text-[#1A237E]">
+
+  <!-- ======================================================== -->
+  <!-- 1. MODERN TOP NAVIGATION BAR -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="https://bharatseo.site" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-[#1A237E] flex items-center justify-center text-[#FF9933] font-black text-2xl shadow-md border-2 border-orange-100/60 group-hover:scale-105 transition-transform duration-300">
+          B
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-black text-[#1A237E] tracking-tight leading-none">
+            Bharat<span class="text-[#FF9933]">SEO</span>
+          </span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-semibold mt-1">
+            Platform Labs
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Status Pill -->
+      <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
+        <span class="w-2 h-2 rounded-full bg-[#FF9933] animate-ping"></span>
+        <span>R&D Preview • Target 2027</span>
+      </div>
+
+      <!-- Right Action CTAs -->
+      <div class="flex items-center gap-3">
+        <a href="#roadmap" class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#1A237E] px-3 py-2 transition-colors">
+          <i data-lucide="milestone" class="w-4 h-4"></i>
+          <span>Roadmap</span>
+        </a>
+        <a href="https://bharatseo.site" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1A237E] hover:bg-blue-900 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
+          <span>Current Agency Site</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 2. HERO SECTION WITH SAAS AMBIENCE -->
+  <!-- ======================================================== -->
+  <section class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden dot-pattern">
+    
+    <!-- Glow Orbs -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] sm:w-[900px] h-[400px] bg-gradient-to-tr from-blue-200/40 via-indigo-100/50 to-orange-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute top-1/3 right-10 w-72 h-72 bg-orange-200/30 rounded-full blur-3xl pointer-events-none -z-10 animate-float-slow"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-center">
+      
+      <!-- Top Development Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs backdrop-blur-md animate-fade-in">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF9933] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF9933]"></span>
+        </span>
+        <span class="text-xs font-bold text-[#1A237E] tracking-wide">
+          Under Development • Public Launch 2027
+        </span>
+      </div>
+
+      <!-- Main Headline & Subtitle -->
+      <div class="max-w-4xl mx-auto space-y-6">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1A237E] tracking-tight leading-[1.1]">
+          Coming Soon: <span class="bg-gradient-to-r from-[#1A237E] via-blue-800 to-[#FF9933] bg-clip-text text-transparent">BharatSEO Platform</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl font-semibold text-slate-800 max-w-3xl mx-auto leading-relaxed">
+          We are building a next-generation AI and cloud platform for Indian businesses, creators, students, and startups.
+        </p>
+
+        <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+          BharatSEO is currently developing a suite of AI-powered tools designed to simplify website creation, resume generation, SEO automation, and business operations through a unified cloud platform.
+        </p>
+      </div>
+
+      <!-- Quick Interactive Metric Badges -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-4">
+        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs text-left space-y-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">Platform State</span>
+          <p class="text-sm font-black text-[#1A237E] flex items-center gap-1.5">
+            <i data-lucide="code" class="w-4 h-4 text-[#FF9933]"></i>
+            Active R&D
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs text-left space-y-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">Target Release</span>
+          <p class="text-sm font-black text-[#1A237E] flex items-center gap-1.5">
+            <i data-lucide="calendar" class="w-4 h-4 text-[#FF9933]"></i>
+            Q2 2027
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs text-left space-y-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">Target Audience</span>
+          <p class="text-sm font-black text-[#1A237E] flex items-center gap-1.5">
+            <i data-lucide="users" class="w-4 h-4 text-[#FF9933]"></i>
+            Indian Ecosystem
+          </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs text-left space-y-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold">Architecture</span>
+          <p class="text-sm font-black text-[#1A237E] flex items-center gap-1.5">
+            <i data-lucide="cloud" class="w-4 h-4 text-[#FF9933]"></i>
+            AWS Serverless
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. FOUR PREMIUM PRODUCT SUITE CARDS (24px Rounded) -->
+  <!-- ======================================================== -->
+  <section id="features" class="py-20 bg-white border-y border-slate-200/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-[#FF9933] font-bold">Unified Cloud Modules</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-[#1A237E] tracking-tight">
+          Planned Core Platform Features
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500">
+          Engineered to eliminate friction, automate manual workflows, and deliver measurable outcomes.
+        </p>
+      </div>
+
+      <!-- 4 Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Feature 1: AI Resume Builder -->
+        <div class="bg-[#F8FAFC] hover:bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(26,35,126,0.03)] hover:shadow-[0_16px_40px_rgba(26,35,126,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-6 group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center text-[#1A237E] group-hover:bg-[#1A237E] group-hover:text-white transition-colors duration-300 shadow-xs">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-200/90 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span>In Development</span>
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-black text-[#1A237E]">
+                AI Resume Builder
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-normal">
+                Generate ATS-friendly resumes, improve content automatically, and export professional templates with AI assistance.
+              </p>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="pt-3 border-t border-slate-200/60 space-y-2 text-[11px] text-slate-600">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>ATS compatibility scoring & real-time fixes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Contextual role-based bullet generator</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>High-precision PDF & LaTeX output</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-bold">
+            <span class="text-[#FF9933]">Generative AI</span>
+            <span class="text-slate-400 group-hover:text-[#1A237E] transition-colors flex items-center gap-1">
+              Module Specs <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Feature 2: AI Website Generator -->
+        <div class="bg-[#F8FAFC] hover:bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(26,35,126,0.03)] hover:shadow-[0_16px_40px_rgba(26,35,126,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-6 group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center text-[#1A237E] group-hover:bg-[#1A237E] group-hover:text-white transition-colors duration-300 shadow-xs">
+                <i data-lucide="globe" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-200/90 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span>In Development</span>
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-black text-[#1A237E]">
+                AI Website Generator
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-normal">
+                Create fast, responsive business websites with modern design, SEO optimization, and cloud-ready deployment.
+              </p>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="pt-3 border-t border-slate-200/60 space-y-2 text-[11px] text-slate-600">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Automated Schema.org structured metadata</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Sub-second 95+ Core Web Vitals score</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Instant CloudFront CDN edge deployment</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-bold">
+            <span class="text-[#FF9933]">Cloud Deployment</span>
+            <span class="text-slate-400 group-hover:text-[#1A237E] transition-colors flex items-center gap-1">
+              Module Specs <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Feature 3: SEO Intelligence Suite -->
+        <div class="bg-[#F8FAFC] hover:bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(26,35,126,0.03)] hover:shadow-[0_16px_40px_rgba(26,35,126,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-6 group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center text-[#1A237E] group-hover:bg-[#1A237E] group-hover:text-white transition-colors duration-300 shadow-xs">
+                <i data-lucide="search" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-200/90 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span>In Development</span>
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-black text-[#1A237E]">
+                SEO Intelligence Suite
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-normal">
+                Automate keyword research, metadata generation, internal linking, and performance recommendations.
+              </p>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="pt-3 border-t border-slate-200/60 space-y-2 text-[11px] text-slate-600">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Regional intent clustering for Indian markets</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Automated JSON-LD & meta tag generation</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Algorithmic rank volatility tracking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-bold">
+            <span class="text-[#FF9933]">Search Engine AI</span>
+            <span class="text-slate-400 group-hover:text-[#1A237E] transition-colors flex items-center gap-1">
+              Module Specs <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Feature 4: Business Dashboard -->
+        <div class="bg-[#F8FAFC] hover:bg-white rounded-[24px] p-7 border border-slate-200/90 shadow-[0_4px_20px_rgba(26,35,126,0.03)] hover:shadow-[0_16px_40px_rgba(26,35,126,0.08)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-6 group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center text-[#1A237E] group-hover:bg-[#1A237E] group-hover:text-white transition-colors duration-300 shadow-xs">
+                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-200/90 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span>In Development</span>
+              </span>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-black text-[#1A237E]">
+                Business Dashboard
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-normal">
+                Manage clients, projects, invoices, support, and growth analytics from a single workspace.
+              </p>
+            </div>
+
+            <!-- Highlights Checklist -->
+            <div class="pt-3 border-t border-slate-200/60 space-y-2 text-[11px] text-slate-600">
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Automated GST invoices & compliance billing</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Client task boards & white-label portals</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                <span>Live revenue analytics & conversion funnels</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-bold">
+            <span class="text-[#FF9933]">Unified SaaS</span>
+            <span class="text-slate-400 group-hover:text-[#1A237E] transition-colors flex items-center gap-1">
+              Module Specs <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. TECH PREVIEW & DEVELOPMENT ROADMAP (BENTO SECTION) -->
+  <!-- ======================================================== -->
+  <section id="roadmap" class="py-24 bg-[#F8FAFC] border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Technology Preview Card -->
+        <div class="lg:col-span-6 bg-white rounded-[24px] p-8 sm:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(26,35,126,0.04)] space-y-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#1A237E] flex items-center justify-center">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-[#1A237E]">Technology Preview</h3>
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Enterprise Architecture</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold">
+                Target Stack
+              </span>
+            </div>
+            
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              The upcoming BharatSEO platform is being designed with a modern cloud architecture focused on performance, security, automation, and scalability.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 space-y-3">
+            <div class="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold">
+              <span>Stack Components</span>
+              <span>AWS & TypeScript</span>
+            </div>
+            
+            <!-- Tech Chips -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="code-2" class="w-3.5 h-3.5 text-slate-400"></i> Next.js
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 text-slate-400"></i> TypeScript
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="server" class="w-3.5 h-3.5 text-slate-400"></i> Node.js
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="database" class="w-3.5 h-3.5 text-slate-400"></i> PostgreSQL
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="cloud" class="w-3.5 h-3.5 text-slate-400"></i> AWS S3
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i> CloudFront
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i> SES
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="layers" class="w-3.5 h-3.5 text-slate-400"></i> Lambda
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#1A237E] hover:text-[#1A237E] transition-colors shadow-2xs">
+                <i data-lucide="bot" class="w-3.5 h-3.5 text-slate-400"></i> Amazon Bedrock
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Development Roadmap Card -->
+        <div class="lg:col-span-6 bg-white rounded-[24px] p-8 sm:p-10 border border-slate-200/90 shadow-[0_4px_24px_rgba(26,35,126,0.04)] space-y-8 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-[#FF9933] flex items-center justify-center">
+                  <i data-lucide="milestone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-[#1A237E]">Development Roadmap</h3>
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Scheduled Releases</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-blue-50 text-[#1A237E] border border-blue-200 text-[11px] font-bold">
+                2026 - 2027
+              </span>
+            </div>
+            
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              A staged rollout plan focused on delivering stable, audited, and resilient automation modules.
+            </p>
+          </div>
+
+          <!-- Timeline Items -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 hover:bg-white hover:border-[#1A237E]/40 hover:shadow-xs transition-all">
+              <span class="font-mono text-xs font-black text-[#1A237E] bg-white px-2.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs shrink-0">
+                Q3 2026
+              </span>
+              <div class="space-y-0.5">
+                <p class="text-xs font-bold text-slate-800">Resume Builder MVP</p>
+                <div class="flex items-center gap-1 text-[10px]">
+                  <span class="text-slate-500 font-medium">Phase 1</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="text-[#FF9933] font-bold">In Pipeline</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 hover:bg-white hover:border-[#1A237E]/40 hover:shadow-xs transition-all">
+              <span class="font-mono text-xs font-black text-[#1A237E] bg-white px-2.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs shrink-0">
+                Q4 2026
+              </span>
+              <div class="space-y-0.5">
+                <p class="text-xs font-bold text-slate-800">Website Generator Beta</p>
+                <div class="flex items-center gap-1 text-[10px]">
+                  <span class="text-slate-500 font-medium">Phase 2</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="text-[#FF9933] font-bold">Architecture Design</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 hover:bg-white hover:border-[#1A237E]/40 hover:shadow-xs transition-all">
+              <span class="font-mono text-xs font-black text-[#1A237E] bg-white px-2.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs shrink-0">
+                Q1 2027
+              </span>
+              <div class="space-y-0.5">
+                <p class="text-xs font-bold text-slate-800">Business Dashboard</p>
+                <div class="flex items-center gap-1 text-[10px]">
+                  <span class="text-slate-500 font-medium">Phase 3</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="text-[#FF9933] font-bold">System Integration</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 hover:bg-white hover:border-[#1A237E]/40 hover:shadow-xs transition-all">
+              <span class="font-mono text-xs font-black text-[#1A237E] bg-white px-2.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs shrink-0">
+                Q2 2027
+              </span>
+              <div class="space-y-0.5">
+                <p class="text-xs font-bold text-slate-800">Public Platform Launch</p>
+                <div class="flex items-center gap-1 text-[10px]">
+                  <span class="text-slate-500 font-medium">Target Launch</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="text-[#FF9933] font-bold">General Availability</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. FOUNDER NOTE CARD (DEEP INDIGO GRADIENT) -->
+  <!-- ======================================================== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-gradient-to-r from-[#0a0e27] via-[#1A237E] to-[#0f1742] text-white rounded-[24px] p-8 sm:p-12 shadow-[0_20px_50px_rgba(26,35,126,0.2)] relative overflow-hidden border border-blue-900/40">
+        
+        <!-- Background Lighting -->
+        <div class="absolute right-0 top-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute left-0 bottom-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 space-y-6 max-w-4xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#FF9933] text-xs font-bold backdrop-blur-xs">
+            <i data-lucide="quote" class="w-3.5 h-3.5"></i>
+            <span>Founder Note</span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-snug tracking-tight">
+            "We are building BharatSEO as a long-term technology platform, not just a service website. Our goal is to create practical AI and automation tools that help Indian businesses launch faster, grow online, and operate more efficiently."
+          </h3>
+
+          <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center font-black text-[#FF9933] text-base">
+                B
+              </div>
+              <div>
+                <p class="font-bold text-white text-sm">BharatSEO Platform Core Team</p>
+                <p class="text-blue-200 text-[11px]">Engineering for India's Digital Economy</p>
+              </div>
+            </div>
+
+            <a href="https://bharatseo.site" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition border border-white/20 text-xs">
+              <span>Visit BharatSEO Agency Site</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Disclaimer Note -->
+      <div class="text-center pt-8">
+        <p class="text-xs text-slate-400 max-w-xl mx-auto flex items-center justify-center gap-1.5 font-normal">
+          <i data-lucide="info" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+          <span>Features, integrations, and launch timelines may evolve during development.</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 6. CLEAN FOOTER -->
+  <!-- ======================================================== -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-[#1A237E] flex items-center justify-center text-[#FF9933] font-bold text-sm">
+          B
+        </div>
+        <span class="text-slate-200 font-bold tracking-tight">BharatSEO Platform</span>
+        <span class="text-slate-600">|</span>
+        <span>Next-Generation Cloud Initiative</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="https://bharatseo.site" class="hover:text-white transition-colors">Agency Services</a>
+        <a href="https://bharatseo.site/services" class="hover:text-white transition-colors">Solutions</a>
+        <a href="https://bharatseo.site/contact" class="hover:text-white transition-colors">Contact Team</a>
+      </div>
+
+      <div>
+        <p class="text-slate-500">© 2026 BharatSEO. All rights reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Lucide Icons Initialization Script -->
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+
+</body>
+</html>
