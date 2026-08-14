@@ -121,6 +121,9 @@ if ($pdo) {
   </div>
 </section>
 
+<!-- Future Product Platform Section -->
+<?php include __DIR__ . '/future-platform-section.php'; ?>
+
 <!-- CTA Section -->
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
   <div class="bg-gradient-to-r from-[#1A237E] to-blue-900 rounded-2xl p-8 sm:p-12 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">

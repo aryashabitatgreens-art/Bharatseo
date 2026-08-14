@@ -20,6 +20,7 @@ import {
   Layers
 } from 'lucide-react';
 import { Service, Blog, Testimonial } from '../types';
+import { FuturePlatformSection } from './FuturePlatformSection';
 
 interface HomeProps {
   services: Service[];
@@ -303,7 +304,10 @@ export const Home: React.FC<HomeProps> = ({
         </div>
       </section>
 
-      {/* 5. CLIENT TESTIMONIALS */}
+      {/* 5. FUTURE PRODUCT: BHARATSEO PLATFORM */}
+      <FuturePlatformSection />
+
+      {/* 6. CLIENT TESTIMONIALS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-xs font-extrabold uppercase tracking-wider text-[#FF9933] bg-[#FF9933]/10 px-3 py-1 rounded-full border border-[#FF9933]/20">
