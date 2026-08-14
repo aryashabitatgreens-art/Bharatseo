@@ -53,11 +53,6 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
       </div>
     </a>
 
-    <!-- Mobile Hamburger Toggle Button -->
-    <button id="mobile-menu-open-btn" onclick="toggleMobileMenu(true)" class="lg:hidden p-2 text-slate-700 hover:text-[#1A237E] rounded-xl focus:outline-none focus:bg-slate-100 transition" aria-label="Open Mobile Navigation">
-      <i class="fa-solid fa-bars text-xl"></i>
-    </button>
-
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex items-center space-x-1">
       <?php
@@ -78,38 +73,39 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
       ?>
     </nav>
 
-    <!-- Action Buttons -->
-    <div class="hidden sm:flex items-center space-x-3">
+    <!-- Right Area: Action Buttons (Desktop) & Mobile Fast Actions -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
       <?php if (is_logged_in()): ?>
-        <a href="dashboard.php" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-[#1A237E] font-bold text-xs flex items-center gap-1.5 transition">
+        <a href="dashboard.php" class="hidden sm:flex px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-[#1A237E] font-bold text-xs items-center gap-1.5 transition">
           <i class="fa-solid fa-gauge"></i> Client Dashboard
         </a>
         <?php if (is_admin()): ?>
-          <a href="admin.php" class="px-4 py-2 rounded-full bg-[#1A237E] text-white font-bold text-xs flex items-center gap-1.5 transition">
+          <a href="admin.php" class="hidden sm:flex px-4 py-2 rounded-full bg-[#1A237E] text-white font-bold text-xs items-center gap-1.5 transition">
             <i class="fa-solid fa-user-shield text-[#FF9933]"></i> Admin Panel
           </a>
         <?php endif; ?>
-        <a href="logout.php" class="p-2 text-slate-400 hover:text-rose-600 text-xs transition" title="Logout">
+        <a href="logout.php" class="hidden sm:inline-flex p-2 text-slate-400 hover:text-rose-600 text-xs transition" title="Logout">
           <i class="fa-solid fa-right-from-bracket"></i>
         </a>
       <?php else: ?>
-        <a href="login.php" class="text-xs font-semibold text-slate-700 hover:text-[#1A237E] px-2.5 py-2 flex items-center gap-1.5">
+        <a href="login.php" class="hidden sm:flex text-xs font-semibold text-slate-700 hover:text-[#1A237E] px-2.5 py-2 items-center gap-1.5">
           <i class="fa-solid fa-arrow-right-to-bracket text-slate-400"></i>
           <span>Sign In</span>
         </a>
-        <a href="login.php?tab=register" class="text-xs font-semibold text-[#1A237E] hover:bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full flex items-center gap-1.5 transition">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-          </svg>
-          <span>Register</span>
-        </a>
-        <a href="contact.php" class="bg-[#FF9933] hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-bold transition shadow-sm">
+        <a href="contact.php" class="hidden md:inline-flex bg-[#FF9933] hover:bg-orange-600 text-white px-4 py-2 rounded-full text-xs font-bold transition shadow-sm">
           Get Free Proposal
         </a>
       <?php endif; ?>
+
+      <!-- Quick Call Button for Mobile -->
+      <a href="tel:<?php echo sanitize($contact_phone); ?>" class="lg:hidden p-2 rounded-full bg-orange-50 text-[#FF9933] hover:bg-orange-100 transition" title="Call Now">
+        <i class="fa-solid fa-phone text-sm"></i>
+      </a>
+
+      <!-- Mobile Hamburger Toggle Button -->
+      <button id="mobile-menu-open-btn" onclick="toggleMobileMenu(true)" class="lg:hidden p-2.5 text-slate-700 hover:text-[#1A237E] rounded-xl hover:bg-slate-100 focus:outline-none transition" aria-label="Open Mobile Navigation">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
     </div>
   </div>
 </header>
@@ -183,13 +179,8 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
           <i class="fa-solid fa-arrow-right-to-bracket text-[#1A237E]"></i> Sign In
         </a>
         <a href="login.php?tab=register" class="w-full py-2.5 px-3 rounded-xl bg-blue-50 border border-blue-200 text-[#1A237E] font-bold text-xs flex items-center justify-center gap-1.5 transition">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-          </svg>
-          Register
+          <i class="fa-solid fa-user-plus text-[#1A237E]"></i>
+          <span>Register</span>
         </a>
       </div>
       <a href="contact.php" class="w-full py-3 px-4 rounded-xl bg-[#FF9933] hover:bg-orange-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm">

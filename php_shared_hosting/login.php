@@ -16,82 +16,14 @@ if (!in_array($active_tab, ['login', 'register', 'forgot'])) {
     $active_tab = 'login';
 }
 
-$google_client_id = get_setting($pdo, 'google_client_id', '102938475612-bharatseo.apps.googleusercontent.com');
-
 // ----------------------------------------------------
 // HANDLE POST ACTIONS
 // ----------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = sanitize($_POST['action'] ?? 'login');
 
-    // 1. GOOGLE AUTH (Via Google Identity Services Token or One-Click Modal)
-    if ($action === 'google_auth') {
-        $google_email = sanitize($_POST['google_email'] ?? '');
-        $google_name = sanitize($_POST['google_name'] ?? '');
-        $credential = $_POST['credential'] ?? '';
-
-        // If JWT token provided by Google Identity Services, decode payload
-        if (!empty($credential)) {
-            $parts = explode('.', $credential);
-            if (count($parts) === 3) {
-                $payload = json_decode(base64_decode(str_replace(['-', '_'], ['+', '/'], $parts[1])), true);
-                if ($payload && !empty($payload['email'])) {
-                    $google_email = sanitize($payload['email']);
-                    $google_name = sanitize($payload['name'] ?? explode('@', $google_email)[0]);
-                }
-            }
-        }
-
-        if (!empty($google_email)) {
-            if (!$pdo) {
-                $error = "Database not connected. Please run installer first.";
-            } else {
-                try {
-                    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
-                    $stmt->execute([$google_email]);
-                    $user = $stmt->fetch();
-
-                    if ($user) {
-                        // User exists -> Log in
-                        $_SESSION['user_id'] = $user['id'];
-                        $_SESSION['user_name'] = $user['name'];
-                        $_SESSION['user_email'] = $user['email'];
-                        $_SESSION['user_role'] = $user['role'];
-
-                        $dest = ($user['role'] === 'admin') ? 'admin.php' : 'dashboard.php';
-                        header("Location: " . $dest);
-                        echo "<script>window.location.href='" . $dest . "';</script>";
-                        exit();
-                    } else {
-                        // New user -> Auto-register as client
-                        $dummy_password = password_hash(bin2hex(random_bytes(16)), PASSWORD_DEFAULT);
-                        $reg_name = !empty($google_name) ? $google_name : explode('@', $google_email)[0];
-                        $reg_phone = '+91 95208 68276';
-
-                        $ins = $pdo->prepare("INSERT INTO users (name, email, phone, password, role, status) VALUES (?, ?, ?, ?, 'client', 'active')");
-                        $ins->execute([$reg_name, $google_email, $reg_phone, $dummy_password]);
-                        $new_id = $pdo->lastInsertId();
-
-                        $_SESSION['user_id'] = $new_id;
-                        $_SESSION['user_name'] = $reg_name;
-                        $_SESSION['user_email'] = $google_email;
-                        $_SESSION['user_role'] = 'client';
-
-                        header("Location: dashboard.php");
-                        echo "<script>window.location.href='dashboard.php';</script>";
-                        exit();
-                    }
-                } catch (Exception $e) {
-                    $error = "Google Authentication Error: " . $e->getMessage();
-                }
-            }
-        } else {
-            $error = "Unable to retrieve email from Google Account.";
-        }
-    }
-
-    // 2. STANDARD EMAIL/PASSWORD LOGIN
-    elseif ($action === 'login') {
+    // 1. STANDARD EMAIL/PASSWORD LOGIN
+    if ($action === 'login') {
         $email = sanitize($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
@@ -132,9 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             echo "<script>window.location.href='" . $dest . "';</script>";
                             exit();
                         } else {
-                            $error = "Incorrect password. Please try again or use default: <strong>admin123</strong>";
+                            $error = "Incorrect password. Please verify and try again.";
                         }
                     } else {
+                        // Fallback check for initial admin account if not yet seeded
                         if (($email === 'ceo@bharatseo.site' || $email === 'admin@bharatseo.in') && $password === 'admin123') {
                             $new_hash = password_hash('admin123', PASSWORD_DEFAULT);
                             $ins = $pdo->prepare("INSERT INTO users (name, email, phone, password, role, status) VALUES ('Bharat SEO Admin', 'ceo@bharatseo.site', '+91 95208 68276', ?, 'admin', 'active')");
@@ -164,12 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 3. REGISTER NEW CLIENT ACCOUNT
+    // 2. REGISTER NEW CLIENT ACCOUNT
     elseif ($action === 'register') {
         $active_tab = 'register';
         $reg_name = sanitize($_POST['name'] ?? '');
         $reg_email = sanitize($_POST['email'] ?? '');
-        $reg_phone = sanitize($_POST['phone'] ?? '+91 95208 68276');
+        $reg_phone = sanitize($_POST['phone'] ?? '');
         $reg_password = $_POST['password'] ?? '';
 
         if (!empty($reg_name) && !empty($reg_email) && !empty($reg_password)) {
@@ -206,12 +139,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 4. FORGOT PASSWORD / OTP SIMULATION
+    // 3. FORGOT PASSWORD
     elseif ($action === 'forgot') {
         $active_tab = 'forgot';
         $forgot_email = sanitize($_POST['email'] ?? '');
         if (!empty($forgot_email)) {
-            $success = "A 6-digit password reset verification code has been dispatched to <strong>" . $forgot_email . "</strong>.";
+            $success = "A password reset link & verification OTP has been dispatched to <strong>" . $forgot_email . "</strong>.";
         } else {
             $error = "Please enter your registered email address.";
         }
@@ -221,9 +154,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Include page header
 require_once __DIR__ . '/header.php';
 ?>
-
-<!-- Google Identity Services Library -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <div class="max-w-md mx-auto px-4 py-10 sm:py-16">
   <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl space-y-6 relative overflow-hidden">
@@ -291,42 +221,7 @@ require_once __DIR__ . '/header.php';
       </div>
     <?php endif; ?>
 
-    <!-- 1. AUTO GOOGLE SIGN IN SECTION (Available on Login & Register) -->
-    <div id="google-auth-section" class="<?php echo ($active_tab === 'forgot') ? 'hidden' : ''; ?> space-y-3">
-      <!-- Google GIS Official Rendered Button -->
-      <div id="gsi-login-button" class="w-full flex justify-center min-h-[44px]"></div>
-
-      <!-- Instant Google Popup Trigger Button -->
-      <button 
-        type="button" 
-        onclick="triggerGoogleOAuthPopup()"
-        class="w-full py-3 px-4 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-3 transition shadow-sm hover:shadow active:scale-[0.99]"
-      >
-        <svg class="w-4 h-4" viewBox="0 0 24 24">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-        </svg>
-        <span>Instant Google One-Click Login</span>
-      </button>
-
-      <div class="relative flex items-center justify-center pt-1">
-        <div class="border-t border-slate-200 w-full"></div>
-        <span class="bg-white px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider relative z-10">Or with email</span>
-      </div>
-    </div>
-
-    <!-- Hidden Form for Google Submit -->
-    <form id="google-auth-form" method="POST" action="login.php" class="hidden">
-      <input type="hidden" name="action" value="google_auth">
-      <input type="hidden" name="google_email" id="google-email-field">
-      <input type="hidden" name="google_name" id="google-name-field">
-      <input type="hidden" name="google_photo" id="google-photo-field">
-      <input type="hidden" name="credential" id="google-credential-field">
-    </form>
-
-    <!-- 2. LOGIN FORM -->
+    <!-- 1. LOGIN FORM -->
     <form id="form-login" method="POST" action="login.php" class="<?php echo ($active_tab === 'login') ? '' : 'hidden'; ?> space-y-4 text-xs">
       <input type="hidden" name="action" value="login">
 
@@ -338,7 +233,7 @@ require_once __DIR__ . '/header.php';
             type="email" 
             name="email" 
             required 
-            value="<?php echo isset($_POST['email']) ? sanitize($_POST['email']) : 'ceo@bharatseo.site'; ?>"
+            value="<?php echo isset($_POST['email']) ? sanitize($_POST['email']) : ''; ?>"
             placeholder="you@company.com" 
             class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-3 py-3 focus:outline-none focus:border-[#FF9933] focus:bg-white transition text-xs text-slate-800"
           >
@@ -347,9 +242,13 @@ require_once __DIR__ . '/header.php';
 
       <div>
         <div class="flex justify-between items-center mb-1.5">
-          <label class="block text-slate-700 font-bold">Password *</label>
-          <button type="button" onclick="switchAuthTab('forgot')" class="text-[11px] text-[#FF9933] font-bold hover:underline">
-            Forgot password?
+          <label class="text-slate-700 font-bold">Password *</label>
+          <button 
+            type="button" 
+            onclick="switchAuthTab('forgot')"
+            class="text-[11px] font-semibold text-[#1A237E] hover:underline"
+          >
+            Forgot Password?
           </button>
         </div>
         <div class="relative">
@@ -358,7 +257,7 @@ require_once __DIR__ . '/header.php';
             type="password" 
             name="password" 
             required 
-            value="admin123"
+            value=""
             placeholder="••••••••" 
             class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-3 py-3 focus:outline-none focus:border-[#FF9933] focus:bg-white transition text-xs text-slate-800"
           >
@@ -369,12 +268,12 @@ require_once __DIR__ . '/header.php';
         type="submit" 
         class="w-full py-3.5 rounded-2xl bg-[#1A237E] hover:bg-blue-900 text-white font-bold transition shadow-md hover:shadow-lg active:scale-[0.99] text-xs flex items-center justify-center gap-2"
       >
-        <i class="fa-solid fa-right-to-bracket"></i>
+        <i class="fa-solid fa-right-from-bracket"></i>
         <span>Sign In to Dashboard</span>
       </button>
     </form>
 
-    <!-- 3. REGISTER FORM -->
+    <!-- 2. REGISTER FORM -->
     <form id="form-register" method="POST" action="login.php" class="<?php echo ($active_tab === 'register') ? '' : 'hidden'; ?> space-y-4 text-xs">
       <input type="hidden" name="action" value="register">
 
@@ -386,7 +285,7 @@ require_once __DIR__ . '/header.php';
             type="text" 
             name="name" 
             required 
-            placeholder="e.g. Vikram Malhotra" 
+            placeholder="e.g. Rahul Sharma" 
             class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-3 py-3 focus:outline-none focus:border-[#FF9933] focus:bg-white transition text-xs text-slate-800"
           >
         </div>
@@ -400,7 +299,7 @@ require_once __DIR__ . '/header.php';
             type="email" 
             name="email" 
             required 
-            placeholder="vikram@business.in" 
+            placeholder="rahul@business.in" 
             class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-3 py-3 focus:outline-none focus:border-[#FF9933] focus:bg-white transition text-xs text-slate-800"
           >
         </div>
@@ -413,8 +312,8 @@ require_once __DIR__ . '/header.php';
           <input 
             type="tel" 
             name="phone" 
-            value="+91 95208 68276"
-            placeholder="+91 95208 68276" 
+            value=""
+            placeholder="+91 98765 43210" 
             class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-10 pr-3 py-3 focus:outline-none focus:border-[#FF9933] focus:bg-white transition text-xs text-slate-800"
           >
         </div>
@@ -443,7 +342,7 @@ require_once __DIR__ . '/header.php';
       </button>
     </form>
 
-    <!-- 4. FORGOT PASSWORD FORM -->
+    <!-- 3. FORGOT PASSWORD FORM -->
     <form id="form-forgot" method="POST" action="login.php" class="<?php echo ($active_tab === 'forgot') ? '' : 'hidden'; ?> space-y-4 text-xs">
       <input type="hidden" name="action" value="forgot">
 
@@ -485,7 +384,6 @@ require_once __DIR__ . '/header.php';
         <div><strong>Email:</strong> ceo@bharatseo.site</div>
         <div><strong>Pass:</strong> admin123</div>
       </div>
-      <p class="text-[10px] text-slate-400">Google Auth will automatically create client accounts on first sign-in.</p>
     </div>
 
     <?php if (!$pdo): ?>
@@ -500,17 +398,11 @@ require_once __DIR__ . '/header.php';
   </div>
 </div>
 
-<!-- Google Identity Services (GSI) Library -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-
 <script>
-  const GOOGLE_CLIENT_ID = "<?php echo sanitize($google_client_id); ?>";
-
   function switchAuthTab(tab) {
     var loginForm = document.getElementById('form-login');
     var registerForm = document.getElementById('form-register');
     var forgotForm = document.getElementById('form-forgot');
-    var googleSec = document.getElementById('google-auth-section');
 
     var btnLogin = document.getElementById('tab-btn-login');
     var btnRegister = document.getElementById('tab-btn-register');
@@ -526,120 +418,14 @@ require_once __DIR__ . '/header.php';
 
     if (tab === 'login') {
       if (loginForm) loginForm.classList.remove('hidden');
-      if (googleSec) googleSec.classList.remove('hidden');
       if (btnLogin) btnLogin.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-white text-[#1A237E] shadow-sm";
     } else if (tab === 'register') {
       if (registerForm) registerForm.classList.remove('hidden');
-      if (googleSec) googleSec.classList.remove('hidden');
       if (btnRegister) btnRegister.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-white text-[#1A237E] shadow-sm";
     } else if (tab === 'forgot') {
       if (forgotForm) forgotForm.classList.remove('hidden');
-      if (googleSec) googleSec.classList.add('hidden');
     }
   }
-
-  // Official Google Identity Services callback handler
-  function handleGoogleCredentialResponse(response) {
-    if (response && response.credential) {
-      try {
-        // Decode JWT token payload on client side
-        const base64Url = response.credential.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(
-          atob(base64)
-            .split('')
-            .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-            .join('')
-        );
-        const payload = JSON.parse(jsonPayload);
-
-        if (payload && payload.email) {
-          document.getElementById('google-email-field').value = payload.email;
-          document.getElementById('google-name-field').value = payload.name || payload.given_name || payload.email.split('@')[0];
-          document.getElementById('google-photo-field').value = payload.picture || '';
-          document.getElementById('google-credential-field').value = response.credential;
-          document.getElementById('google-auth-form').submit();
-          return;
-        }
-      } catch (e) {
-        console.warn("Google token parse notice:", e);
-      }
-      document.getElementById('google-credential-field').value = response.credential;
-      document.getElementById('google-auth-form').submit();
-    }
-  }
-
-  // Initialize official Google Identity Services button & One-Tap
-  function initGoogleAuth() {
-    if (window.google && window.google.accounts && window.google.accounts.id) {
-      try {
-        window.google.accounts.id.initialize({
-          client_id: GOOGLE_CLIENT_ID,
-          callback: handleGoogleCredentialResponse,
-          auto_select: false,
-          cancel_on_tap_outside: true
-        });
-
-        const btnContainer = document.getElementById('gsi-login-button');
-        if (btnContainer) {
-          btnContainer.innerHTML = '';
-          window.google.accounts.id.renderButton(btnContainer, {
-            type: 'standard',
-            theme: 'outline',
-            size: 'large',
-            text: 'continue_with',
-            shape: 'pill',
-            logo_alignment: 'left',
-            width: 380
-          });
-        }
-      } catch (err) {
-        console.warn("Google initialization notice:", err);
-      }
-    }
-  }
-
-  // Direct trigger for Google OAuth popup
-  function triggerGoogleOAuthPopup() {
-    if (window.google && window.google.accounts && window.google.accounts.oauth2) {
-      try {
-        const client = window.google.accounts.oauth2.initTokenClient({
-          client_id: GOOGLE_CLIENT_ID,
-          scope: 'email profile openid',
-          callback: async (tokenResponse) => {
-            if (tokenResponse && tokenResponse.access_token) {
-              try {
-                const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                  headers: { Authorization: 'Bearer ' + tokenResponse.access_token }
-                });
-                const user = await res.json();
-                if (user && user.email) {
-                  document.getElementById('google-email-field').value = user.email;
-                  document.getElementById('google-name-field').value = user.name || user.email.split('@')[0];
-                  document.getElementById('google-photo-field').value = user.picture || '';
-                  document.getElementById('google-auth-form').submit();
-                }
-              } catch (e) {
-                alert('Could not fetch user details from Google.');
-              }
-            }
-          }
-        });
-        client.requestAccessToken({ prompt: 'select_account' });
-        return;
-      } catch (e) {
-        console.warn("Token client notice:", e);
-      }
-    }
-
-    if (window.google && window.google.accounts && window.google.accounts.id) {
-      window.google.accounts.id.prompt();
-    }
-  }
-
-  window.addEventListener('load', function() {
-    setTimeout(initGoogleAuth, 350);
-  });
 </script>
 
 <?php require_once __DIR__ . '/footer.php'; ?>

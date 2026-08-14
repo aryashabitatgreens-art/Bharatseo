@@ -77,7 +77,7 @@ if ($pdo) {
                   </div>
                 </div>
 
-                <a href="contact.php?service=<?php echo urlencode($svc['title']); ?>&plan=<?php echo urlencode($plan['plan_name']); ?>" class="w-full py-3 rounded-full text-center text-xs font-bold transition shadow-sm <?php echo $is_growth ? 'bg-[#FF9933] hover:bg-orange-600 text-white' : 'bg-[#1A237E] hover:bg-blue-900 text-white'; ?>">
+                <a href="order.php?service_id=<?php echo urlencode($svc['id']); ?>&plan=<?php echo urlencode($plan['plan_name']); ?>" class="w-full py-3 rounded-full text-center text-xs font-bold transition shadow-sm <?php echo $is_growth ? 'bg-[#FF9933] hover:bg-orange-600 text-white' : 'bg-[#1A237E] hover:bg-blue-900 text-white'; ?>">
                   Order <?php echo sanitize($plan['plan_name']); ?> Plan
                 </a>
               </div>

@@ -83,7 +83,7 @@ $whatsapp_number = get_setting($pdo, 'whatsapp_number', '919520868276');
     </div>
 
     <!-- Bottom Copyright -->
-    <div class="mt-10 pt-6 border-t border-blue-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3">
+    <div class="mt-10 pt-6 border-t border-blue-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3 pb-16 lg:pb-0">
       <p>© <?php echo date('Y'); ?> <?php echo sanitize($site_name); ?> Agency. All rights reserved.</p>
       <div class="flex items-center space-x-4">
         <a href="contact.php" class="hover:text-white transition">Privacy Policy</a>
@@ -97,9 +97,39 @@ $whatsapp_number = get_setting($pdo, 'whatsapp_number', '919520868276');
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/<?php echo sanitize($whatsapp_number); ?>?text=Hi%20<?php echo urlencode($site_name); ?>,%20I%20want%20to%20discuss%20a%20project!" target="_blank" rel="noreferrer" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+<a href="https://wa.me/<?php echo sanitize($whatsapp_number); ?>?text=Hi%20<?php echo urlencode($site_name); ?>,%20I%20want%20to%20discuss%20a%20project!" target="_blank" rel="noreferrer" class="fixed bottom-20 sm:bottom-6 right-5 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110" aria-label="Chat on WhatsApp">
   <i class="fa-brands fa-whatsapp text-2xl"></i>
 </a>
+
+<!-- Mobile Bottom Navigation Bar -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-around shadow-2xl">
+  <a href="index.php" class="flex flex-col items-center gap-0.5 text-[10px] font-semibold <?php echo ($current_page === 'index' || $current_page === '') ? 'text-[#1A237E]' : 'text-slate-500 hover:text-slate-800'; ?>">
+    <i class="fa-solid fa-house text-base"></i>
+    <span>Home</span>
+  </a>
+  <a href="services.php" class="flex flex-col items-center gap-0.5 text-[10px] font-semibold <?php echo ($current_page === 'services') ? 'text-[#1A237E]' : 'text-slate-500 hover:text-slate-800'; ?>">
+    <i class="fa-solid fa-layer-group text-base"></i>
+    <span>Pricing</span>
+  </a>
+  <a href="tel:<?php echo sanitize($contact_phone); ?>" class="flex flex-col items-center -mt-5 bg-[#FF9933] text-white p-3 rounded-full shadow-lg border-2 border-white hover:bg-orange-600 transition">
+    <i class="fa-solid fa-phone text-base"></i>
+  </a>
+  <a href="contact.php" class="flex flex-col items-center gap-0.5 text-[10px] font-semibold <?php echo ($current_page === 'contact') ? 'text-[#1A237E]' : 'text-slate-500 hover:text-slate-800'; ?>">
+    <i class="fa-solid fa-headset text-base"></i>
+    <span>Audit</span>
+  </a>
+  <?php if (is_logged_in()): ?>
+    <a href="dashboard.php" class="flex flex-col items-center gap-0.5 text-[10px] font-semibold <?php echo ($current_page === 'dashboard' || $current_page === 'admin') ? 'text-[#1A237E]' : 'text-slate-500 hover:text-slate-800'; ?>">
+      <i class="fa-solid fa-gauge text-base"></i>
+      <span>Portal</span>
+    </a>
+  <?php else: ?>
+    <a href="login.php" class="flex flex-col items-center gap-0.5 text-[10px] font-semibold <?php echo ($current_page === 'login') ? 'text-[#1A237E]' : 'text-slate-500 hover:text-slate-800'; ?>">
+      <i class="fa-solid fa-user text-base"></i>
+      <span>Sign In</span>
+    </a>
+  <?php endif; ?>
+</div>
 
 </body>
 </html>
