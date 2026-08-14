@@ -58,7 +58,7 @@ define('DB_NAME', 'u123456_bharat_db');   // Your MySQL Database Name
 ## 🔐 Admin Login Credentials
 
 - **Admin Login URL**: `https://yourdomain.com/login.php`
-- **Default Email**: `admin@bharatseo.in`
+- **Default Email**: `ceo@bharatseo.site`
 - **Default Password**: `admin123`
 
 *(You can update the password or admin email anytime from `login.php` or `admin.php`)*

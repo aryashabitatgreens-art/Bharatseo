@@ -513,7 +513,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({ onOpenInvoice }) =
                 <input
                   type="text"
                   readOnly
-                  value={user.phone || '+91 98765 43210'}
+                  value={user.phone || '+91 95208 68276'}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 font-semibold"
                 />
               </div>

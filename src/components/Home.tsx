@@ -182,8 +182,8 @@ export const Home: React.FC<HomeProps> = ({
             <div className="text-xs sm:text-sm font-semibold text-slate-500">Active Business Clients</div>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl sm:text-4xl font-black text-[#1A237E]">8+ Years</div>
-            <div className="text-xs sm:text-sm font-semibold text-slate-500">Digital Mastery</div>
+            <div className="text-3xl sm:text-4xl font-black text-[#1A237E]">3 Years</div>
+            <div className="text-xs sm:text-sm font-semibold text-slate-500">Industry Mastery</div>
           </div>
           <div className="space-y-1">
             <div className="text-3xl sm:text-4xl font-black text-[#FF9933]">99.4%</div>

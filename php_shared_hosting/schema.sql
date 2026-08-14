@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Default Admin User (Password: admin123)
 INSERT INTO `users` (`name`, `email`, `phone`, `password`, `role`, `status`) VALUES
-('Bharat SEO Admin', 'admin@bharatseo.in', '+91 98765 43210', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHe1fS3X93mJ4OaF9M1l9v6Q2qXwP2s1W', 'admin', 'active')
+('Bharat SEO Admin', 'ceo@bharatseo.site', '+91 95208 68276', '$2y$10$wT0r7yK8o2O5c9Wz8F.8ue6RkL9uWdYrT61.p2o/aKzW7nE.G3E7G', 'admin', 'active')
 ON DUPLICATE KEY UPDATE `name`=`name`;
 
 -- 2. Services Table
@@ -38,10 +38,13 @@ CREATE TABLE IF NOT EXISTS `services` (
 
 -- Initial Services
 INSERT INTO `services` (`id`, `category`, `title`, `slug`, `short_desc`, `description`, `image`) VALUES
-(1, 'SEO', 'Technical & Local Google SEO', 'google-seo-campaigns', 'Dominate Google Page 1 search results with data-backed keyword optimization, high-authority link building, and local GMB rankings.', 'Comprehensive SEO campaigns engineered to rank your website organically on Google search for high-converting commercial keywords.', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'),
-(2, 'Web Development', 'Custom Web & E-Commerce Engineering', 'custom-web-development', 'High-speed custom websites, web portals, and e-commerce stores designed for 95+ PageSpeed performance and maximum sales conversions.', 'Bespoke web applications built with modern frontend responsive layouts, payment gateway integration, and secure backend APIs.', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80'),
-(3, 'PPC / Ads', 'Google & Meta Performance Ads', 'google-meta-ppc-ads', 'Data-driven paid advertisement campaigns across Google Search, Instagram Reels, and Facebook to generate instant, qualified leads.', 'Maximize Return on Ad Spend (ROAS) with hyper-targeted audience campaigns, custom landing pages, and automated lead routing.', 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80')
-ON DUPLICATE KEY UPDATE `title`=`title`;
+(1, 'SEO', 'Technical & Organic SEO Dominance', 'technical-organic-seo-campaigns', 'Dominate Google Page #1 rankings with AI Overview optimization, high-intent commercial keywords, and high-DA authority backlinks.', 'Our enterprise SEO campaigns help your brand capture top spots on Google Search for high-value commercial keywords. We integrate deep keyword research, Core Web Vitals speed tuning, high-authority editorial link acquisition, and AI Overview (SGE) optimization.', 'https://images.unsplash.com/photo-1562577309-2592ab84b1bc?auto=format&fit=crop&w=800&q=80'),
+(2, 'SEO', 'Local SEO & Google Maps (3-Pack) Ranking', 'local-seo-gmb-ranking', 'Capture nearby customers and dominate the Google Local 3-Pack with hyper-local citations, review automation, and geo-targeted landing pages.', 'Transform your physical store, clinic, or regional agency into the #1 searched service in your city. We optimize your Google Business Profile (GBP), deploy geo-tagged photo citations, manage reputation, and build hyper-local authority.', 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80'),
+(3, 'Web Development', 'Custom Web Development & E-Commerce', 'custom-web-development-ecommerce', 'Lightning-fast, mobile-first websites, web portals, and Shopify/WooCommerce stores engineered for 95+ PageSpeed and high conversions.', 'We craft bespoke web platforms with clean architecture, sub-second TTFB, seamless mobile responsiveness, and bank-grade payment security. From enterprise portals to multi-vendor e-commerce stores, we build for conversion and scale.', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'),
+(4, 'PPC / Ads', 'Google Ads & High-ROAS Performance Marketing', 'google-ads-ppc-marketing', 'Stop wasting ad spend. Maximize Return on Ad Spend (ROAS) with hyper-targeted Google Search, Shopping, YouTube, and Performance Max campaigns.', 'We design high-converting PPC campaigns with rigorous A/B ad creative testing, high-intent negative keyword moats, advanced conversion pixel tracking, and dedicated landing page optimization to deliver maximum lead quality.', 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80'),
+(5, 'Social Media', 'Social Media Growth, Meta Ads & Viral Reels', 'social-media-marketing-reels', 'Build an authoritative brand presence on Instagram, Facebook, and LinkedIn with trending 4K Reels, lead-generation ad funnels, and community engagement.', 'Transform social media from vanity metrics into revenue. We produce eye-catching carousel designs, viral video Reels/Shorts editing, founder brand building on LinkedIn, and high-converting Meta lead generation ads.', 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80'),
+(6, 'Hosting & Deployment', 'Cloud Infrastructure, cPanel & VPS Hardening', 'cloud-hosting-vps-deployment', 'Ultra-secure, lightning-fast web deployment on LiteSpeed cPanel, AWS, or DigitalOcean with zero downtime, SSL, and automated off-site backups.', 'We take complete care of your digital infrastructure so your website never crashes. Complete domain DNS configuration, business SMTP email server setup, LiteSpeed cache acceleration, automated off-site daily backups, and malware protection.', 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80')
+ON DUPLICATE KEY UPDATE `title`=VALUES(`title`), `description`=VALUES(`description`), `short_desc`=VALUES(`short_desc`);
 
 -- 3. Service Plans Table
 CREATE TABLE IF NOT EXISTS `service_plans` (
@@ -56,13 +59,25 @@ CREATE TABLE IF NOT EXISTS `service_plans` (
 
 -- Initial Plans
 INSERT INTO `service_plans` (`id`, `service_id`, `plan_name`, `price`, `billing_period`, `features`) VALUES
-(1, 1, 'Starter', 14999.00, 'monthly', 'Target 10 Main Keywords, On-Page SEO & Meta Tags, Google Business Profile (GMB) Setup, Monthly Ranking Report'),
-(2, 1, 'Growth', 29999.00, 'monthly', 'Target 25 Main Keywords, High PR Backlink Building, Technical Schema & Speed Tuning, Dedicated SEO Strategist'),
-(3, 1, 'Enterprise', 59999.00, 'monthly', '50+ High-Volume Keywords, Custom Content Strategy, Competitor Ad Hijacking, 24/7 Dedicated Support'),
-(4, 2, 'Starter', 24999.00, 'one-time', '5-Page Responsive Business Site, WhatsApp Chat Integration, SSL Certificate & Fast Hosting Setup, Basic On-Page SEO'),
-(5, 2, 'Growth', 49999.00, 'one-time', '15-Page Custom Web App, Razorpay Payment Gateway, Admin CMS Panel, 95+ Google PageSpeed Guarantee'),
-(6, 2, 'Enterprise', 99999.00, 'one-time', 'Full E-Commerce Portal / SaaS Engine, Multi-Vendor Capabilities, Custom ERP/CRM Sync, Priority Maintenance')
-ON DUPLICATE KEY UPDATE `price`=`price`;
+(1, 1, 'Starter', 14999.00, 'monthly', '15 High-Intent Keywords, On-Page & Core Web Vitals Fixes, Search Console & GA4 Setup, Monthly Traffic Audit, GMB Profile Sync'),
+(2, 1, 'Growth', 29999.00, 'monthly', '35 High-Commercial Keywords, 3 High DA (50+) Contextual Backlinks, Schema Graph Markup, Competitor Conquesting, CRO Audit, Bi-Weekly Strategy Reviews'),
+(3, 1, 'Enterprise', 59999.00, 'monthly', 'Top 75+ High-Volume Keywords, 8 High-DA Editorial Backlinks/Mo, AI Overview (SGE) Strategy, E-Commerce Silo Architecture, Dedicated SEO Director, Weekly Live Tracking'),
+(4, 2, 'Starter', 8999.00, 'monthly', 'Single Location GMB Optimization, 50 Local Citations & NAP Sync, Review Generation QR Kit, Weekly Geo-Tagged Posts, Monthly Maps Proximity Report'),
+(5, 2, 'Growth', 17999.00, 'monthly', 'Up to 3 Business Locations, 120 Geo-Tagged Citations, Google Maps 3-Pack Rank Engine, Review Response Management, Local Press Release Backlinks'),
+(6, 2, 'Enterprise', 34999.00, 'monthly', 'Multi-City Franchise Network (Up to 10 Locations), Hyper-Local City Landing Pages, Automated WhatsApp Review Booster, Dedicated Local Reputation Manager'),
+(7, 3, 'Starter', 24999.00, 'one-time', '5-Page Responsive Business Site, WhatsApp Instant Chat + Forms, 1 Year NVMe Hosting & SSL, Full Technical SEO Included, 5-Day Delivery'),
+(8, 3, 'Growth', 49999.00, 'one-time', '15 Custom Pages or E-Commerce (100 Products), Razorpay / Stripe Payment Gateway, Custom Client Portal & CMS, 95+ PageSpeed Guarantee, GA4 Tracking'),
+(9, 3, 'Enterprise', 99999.00, 'one-time', 'Bespoke Web App / SaaS / Marketplace, Custom REST APIs & Database, Dedicated Cloud VPS Deployment (cPanel/AWS), DDoS Shield, 1 Year Priority SLA Support'),
+(10, 4, 'Starter', 12999.00, 'monthly', 'Google Search Ads Setup & Optimization, Negative Keyword Shield, Up to ₹50,000 Ad Spend Management, Conversion Tracking, Monthly ROI Dashboard'),
+(11, 4, 'Growth', 27999.00, 'monthly', 'Search + Shopping + YouTube Ads, Custom High-Converting Landing Page Design, Up to ₹2.5 Lakh Spend Management, A/B Split Testing, Bi-Weekly Calls'),
+(12, 4, 'Enterprise', 54999.00, 'monthly', 'Omnichannel Performance Max (PMax) Funnels, Unlimited Ad Spend Management, CRM Offline Conversion Import, Dedicated PPC Director, Weekly Scaling Calls'),
+(13, 5, 'Starter', 14999.00, 'monthly', '12 Custom Engagement Graphics, 4 High-Converting 4K Reels/Shorts, Instagram & Facebook Management, Hashtag SEO Strategy, Monthly Growth Report'),
+(14, 5, 'Growth', 29999.00, 'monthly', '20 Custom Posts + 8 Reels, Meta Lead Gen Ads Management, Community DM Handling, LinkedIn Thought-Leadership for Founders, Competitor Benchmarking'),
+(15, 5, 'Enterprise', 59999.00, 'monthly', 'Daily Content (30 Posts + 15 Viral Reels/Shorts), Full Influencer Outreach, Advanced Retargeting Funnels, Dedicated Designer & Video Editor Team'),
+(16, 6, 'Starter', 4999.00, 'yearly', '1 Site on LiteSpeed cPanel, Free AutoSSL & Unlimited Corporate Emails, 15GB NVMe SSD Storage, Automated Weekly Backups, 99.9% Uptime Guarantee'),
+(17, 6, 'Growth', 11999.00, 'yearly', 'Host Unlimited Websites, 75GB NVMe SSD Storage, Custom Socket SMTP Mail Setup, Daily Automated Cloud Backups, Free Site Migration'),
+(18, 6, 'Enterprise', 24999.00, 'yearly', 'Dedicated Managed Cloud VPS (AWS/DigitalOcean), Full Root Access & WHM License, Cloudflare Enterprise CDN, 24/7 DevOps Monitoring, Real-Time Malware Shield')
+ON DUPLICATE KEY UPDATE `price`=VALUES(`price`), `features`=VALUES(`features`);
 
 -- 4. Orders Table
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -150,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `settings` (
 INSERT INTO `settings` (`key_name`, `value`) VALUES
 ('site_name', 'Bharat SEO'),
 ('agency_tagline', 'Empowering Indian & Global Businesses with Data-Driven Digital Growth'),
-('contact_email', 'contact@bharatseo.in'),
-('contact_phone', '+91 98765 43210'),
-('whatsapp_number', '919876543210'),
+('contact_email', 'ceo@bharatseo.site'),
+('contact_phone', '+91 95208 68276'),
+('whatsapp_number', '919520868276'),
 ('office_address', 'Bharat Tower, Connaught Place, New Delhi 110001'),
 ('razorpay_key_id', 'rzp_test_BHARATSEO2026'),
 ('google_client_id', '102938475612-bharatseo.apps.googleusercontent.com')

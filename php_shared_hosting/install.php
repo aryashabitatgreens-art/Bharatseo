@@ -39,6 +39,11 @@ if ($step === 2 && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 $pdo->exec($sql);
             }
 
+            // Ensure Admin user has valid fresh hash
+            $admin_hash = password_hash('admin123', PASSWORD_DEFAULT);
+            $stmt_admin = $pdo->prepare("INSERT INTO users (name, email, phone, password, role, status) VALUES ('Bharat SEO Admin', 'ceo@bharatseo.site', '+91 95208 68276', ?, 'admin', 'active') ON DUPLICATE KEY UPDATE password = ?");
+            $stmt_admin->execute([$admin_hash, $admin_hash]);
+
             // Write config.php
             $config_content = "<?php\n";
             $config_content .= "/**\n * Auto-generated configuration by Installer\n */\n\n";
@@ -173,7 +178,7 @@ if ($step === 2 && $_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2">
           <p class="font-bold text-[#1A237E]">Admin Login Details:</p>
           <p>• <strong>Login URL:</strong> <a href="login.php" class="text-blue-600 underline">login.php</a></p>
-          <p>• <strong>Email:</strong> admin@bharatseo.in</p>
+          <p>• <strong>Email:</strong> ceo@bharatseo.site</p>
           <p>• <strong>Password:</strong> admin123</p>
         </div>
 

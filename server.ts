@@ -82,7 +82,7 @@ let supportTickets: SupportTicket[] = [
         id: 'rep-1',
         sender: 'admin',
         sender_name: 'Aarav Sharma (Admin)',
-        message: 'Hello Rajesh, please grant access to seo-team@bharatseo.in in Search Console settings.',
+        message: 'Hello Rajesh, please grant access to ceo@bharatseo.site in Search Console settings.',
         created_at: '2026-08-10 10:30:00'
       }
     ]

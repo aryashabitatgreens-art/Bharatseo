@@ -56,7 +56,7 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const rawPhone = siteSettings.whatsapp_number || siteSettings.contact_phone || '919876543210';
+  const rawPhone = siteSettings.whatsapp_number || siteSettings.contact_phone || '919520868276';
   const whatsappNumber = rawPhone.replace(/\D/g, '');
   const whatsappMessage = encodeURIComponent(`Hi ${siteSettings.site_name || 'Bharat SEO'}, I would like to chat on WhatsApp regarding your services!`);
 
@@ -192,7 +192,7 @@ export const Contact: React.FC = () => {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 95208 68276"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FF9933]"

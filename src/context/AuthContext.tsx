@@ -30,14 +30,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({
     site_name: 'Bharat SEO',
     agency_tagline: 'Empowering Indian & Global Businesses with Data-Driven Digital Growth',
-    contact_email: 'contact@bharatseo.in',
-    contact_phone: '+91 98765 43210',
-    whatsapp_number: '919876543210',
+    contact_email: 'ceo@bharatseo.site',
+    contact_phone: '+91 95208 68276',
+    whatsapp_number: '919520868276',
     office_address: 'Bharat Tower, Connaught Place, New Delhi 110001',
     razorpay_key_id: 'rzp_test_BHARATSEO2026',
     google_client_id: '102938475612-bharatseo.apps.googleusercontent.com',
-    smtp_host: 'smtp.bharatseo.in',
-    smtp_user: 'noreply@bharatseo.in'
+    smtp_host: 'smtp.bharatseo.site',
+    smtp_user: 'ceo@bharatseo.site'
   });
 
   const [authModalOpen, setAuthModalOpen] = useState(false);

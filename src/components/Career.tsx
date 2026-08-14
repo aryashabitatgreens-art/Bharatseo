@@ -221,7 +221,7 @@ export const Career: React.FC<CareerProps> = ({ jobs, onApplySuccess }) => {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 95208 68276"
                         value={applicantPhone}
                         onChange={(e) => setApplicantPhone(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#FF9933]"

@@ -3,24 +3,24 @@ import { Service, Job, Blog, TeamMember, Testimonial, SiteSettings, User, Order 
 export const initialSiteSettings: SiteSettings = {
   site_name: 'Bharat SEO',
   agency_tagline: 'Empowering Indian & Global Businesses with Data-Driven Digital Growth',
-  contact_email: 'contact@bharatseo.in',
-  contact_phone: '+91 98765 43210',
-  whatsapp_number: '919876543210',
+  contact_email: 'ceo@bharatseo.site',
+  contact_phone: '+91 95208 68276',
+  whatsapp_number: '919520868276',
   office_address: 'Bharat Tower, 4th Floor, Connaught Place, New Delhi, 110001 / Tech Park, Indiranagar, Bengaluru',
   razorpay_key_id: 'rzp_test_BHARATSEO2026',
   google_client_id: '102938475612-bharatseo.apps.googleusercontent.com',
-  smtp_host: 'smtp.bharatseo.in',
-  smtp_user: 'noreply@bharatseo.in',
+  smtp_host: 'smtp.bharatseo.site',
+  smtp_user: 'ceo@bharatseo.site',
 };
 
 export const initialServices: Service[] = [
   {
     id: 'srv-1',
     category: 'SEO',
-    title: 'Search Engine Optimization (SEO)',
-    slug: 'search-engine-optimization',
-    short_desc: 'Dominate Google rankings with high-intent keywords, technical audits, and organic backlink strategies.',
-    description: 'Our comprehensive SEO services help your business achieve top positions on Google search results. We combine deep keyword research, technical site fixes, high-authority link building, and local SEO optimizations tailored for the Indian and international markets.',
+    title: 'Technical & Organic SEO Dominance',
+    slug: 'technical-organic-seo-campaigns',
+    short_desc: 'Dominate Google Page #1 rankings with AI Overview optimization, high-intent commercial keywords, and high-DA authority backlinks.',
+    description: 'Our enterprise SEO campaigns help your brand capture top spots on Google Search for high-value commercial keywords. We integrate deep keyword research, Core Web Vitals speed tuning, high-authority editorial link acquisition, and AI Overview (SGE) optimization.',
     image: 'https://images.unsplash.com/photo-1562577309-2592ab84b1bc?auto=format&fit=crop&w=800&q=80',
     icon: 'TrendingUp',
     status: 'active',
@@ -31,7 +31,13 @@ export const initialServices: Service[] = [
         plan_name: 'Starter',
         price: 14999,
         billing_period: 'monthly',
-        features: ['10 Keywords Optimization', 'On-Page & Technical SEO Fixes', 'Google Search Console Setup', 'Monthly Progress Report', 'Local Google Business Profile SEO']
+        features: [
+          '15 High-Intent Commercial Keywords',
+          'On-Page & Core Web Vitals Optimization',
+          'Google Search Console & GA4 Setup',
+          'Monthly Ranking & Traffic Audit',
+          'Google Business Profile (GMB) Sync'
+        ]
       },
       {
         id: 'p-102',
@@ -39,7 +45,14 @@ export const initialServices: Service[] = [
         plan_name: 'Growth',
         price: 29999,
         billing_period: 'monthly',
-        features: ['25 Keywords Target', 'Comprehensive Content Audit', '2 High-DA Backlinks / Month', 'Competitor Keyword Conquesting', 'Bi-weekly Strategy Calls', 'Schema Markup Integration']
+        features: [
+          '35 Targeted Commercial Keywords',
+          '3 High DA (50+) Contextual Editorial Backlinks',
+          'Technical Schema Graph Markup & Fixes',
+          'Competitor Keyword Conquesting & Gap Analysis',
+          'Conversion Rate Optimization (CRO) Audit',
+          'Bi-weekly Strategy & Performance Review'
+        ]
       },
       {
         id: 'p-103',
@@ -47,93 +60,138 @@ export const initialServices: Service[] = [
         plan_name: 'Enterprise',
         price: 59999,
         billing_period: 'monthly',
-        features: ['Unlimited / Top 50 Keywords', 'Dedicated Senior SEO Manager', '5 High-DA Contextual Backlinks', 'E-commerce / Multi-location SEO', 'Weekly Keyword Tracking', '24/7 Priority Support']
+        features: [
+          'Top 75+ High-Volume Search Keywords',
+          '8 High-DA Contextual Editorial Backlinks / Month',
+          'AI Overview (SGE) & Semantic Topical Authority',
+          'E-Commerce Multi-Category Silo Architecture',
+          '24/7 Dedicated Senior SEO Account Director',
+          'Weekly Live Keyword Position Tracking'
+        ]
       }
     ]
   },
   {
     id: 'srv-2',
-    category: 'Web Development',
-    title: 'Custom Web Development & E-Commerce',
-    slug: 'custom-web-development',
-    short_desc: 'High-speed, SEO-ready websites, web apps, and Shopify/WooCommerce stores engineered for conversions.',
-    description: 'We craft high-performance websites built with clean architecture, mobile-first design, fast loading speeds (Core Web Vitals optimized), and secure payment integration. From custom portals to e-commerce storefronts, we build for scale.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    icon: 'Code',
+    category: 'SEO',
+    title: 'Local SEO & Google Maps (3-Pack) Ranking',
+    slug: 'local-seo-gmb-ranking',
+    short_desc: 'Capture nearby customers and dominate the Google Local 3-Pack with hyper-local citations, review automation, and geo-targeted landing pages.',
+    description: 'Transform your physical store, clinic, or regional agency into the #1 searched service in your city. We optimize your Google Business Profile (GBP), deploy geo-tagged photo citations, manage reputation, and build hyper-local authority.',
+    image: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80',
+    icon: 'TrendingUp',
     status: 'active',
     plans: [
       {
         id: 'p-201',
         service_id: 'srv-2',
         plan_name: 'Starter',
-        price: 19999,
-        billing_period: 'one-time',
-        features: ['5 Page Business Website', 'Mobile & Tablet Responsive', 'Contact Form + WhatsApp Chat', '1 Year Free Hosting & SSL', 'Basic On-Page SEO Included']
+        price: 8999,
+        billing_period: 'monthly',
+        features: [
+          'Single Location Google Profile (GMB) Optimization',
+          '50 High-Authority Local Indian Citations',
+          'Review Generation QR Code & SMS Kit',
+          'Weekly Geo-Tagged Media Updates',
+          'Monthly Google Maps Proximity Report'
+        ]
       },
       {
         id: 'p-202',
         service_id: 'srv-2',
         plan_name: 'Growth',
-        price: 44999,
-        billing_period: 'one-time',
-        features: ['Up to 15 Pages / E-Commerce (50 Products)', 'Payment Gateway Integration (Razorpay/PayU)', 'Custom Admin Panel Dashboard', 'Speed Optimization (90+ PageSpeed)', 'Google Analytics & Tag Manager']
+        price: 17999,
+        billing_period: 'monthly',
+        features: [
+          'Up to 3 Business Locations Optimized',
+          '120 Premium Geo-Tagged Local Citations',
+          'Google Maps 3-Pack Proximity Ranking Engine',
+          'Competitor Review Interception & Response Management',
+          'Local Press Release Distribution & Backlinks',
+          'Bi-Weekly Local Traffic Analytics'
+        ]
       },
       {
         id: 'p-203',
         service_id: 'srv-2',
         plan_name: 'Enterprise',
-        price: 89999,
-        billing_period: 'one-time',
-        features: ['Full Custom Web Application / Marketplace', 'Scalable Database & API Integration', 'Dedicated Server Setup (cPanel/VPS)', 'Advanced Security & DDoS Protection', '1 Year Maintenance & SLA Support']
+        price: 34999,
+        billing_period: 'monthly',
+        features: [
+          'Multi-City Franchise Network (Up to 10 Locations)',
+          'Dedicated Hyper-Local City Landing Pages',
+          'Automated WhatsApp 5-Star Review Booster',
+          'Local Geo-Fence Ad Integration',
+          'Dedicated Local Reputation Strategist'
+        ]
       }
     ]
   },
   {
     id: 'srv-3',
-    category: 'PPC / Ads',
-    title: 'Google Ads & Performance Marketing',
-    slug: 'google-ads-ppc',
-    short_desc: 'Maximize ROI with hyper-targeted Google Search, Shopping, Display, and Remarketing ad campaigns.',
-    description: 'Stop burning money on ineffective ads. Bharat SEO specializes in high-converting PPC campaigns with rigorous A/B testing, negative keyword lists, conversion tracking, and Landing Page Optimization.',
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
-    icon: 'Target',
+    category: 'Web Development',
+    title: 'Custom Web Development & E-Commerce',
+    slug: 'custom-web-development-ecommerce',
+    short_desc: 'Lightning-fast, mobile-first websites, web portals, and Shopify/WooCommerce stores engineered for 95+ PageSpeed and high conversions.',
+    description: 'We craft bespoke web platforms with clean architecture, sub-second TTFB, seamless mobile responsiveness, and bank-grade payment security. From enterprise portals to multi-vendor e-commerce stores, we build for conversion and scale.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    icon: 'Code',
     status: 'active',
     plans: [
       {
         id: 'p-301',
         service_id: 'srv-3',
         plan_name: 'Starter',
-        price: 11999,
-        billing_period: 'monthly',
-        features: ['Google Search Ads Setup', 'Keyword & Negative List Creation', 'Up to ₹50k Ad Budget Management', 'Monthly Performance Dashboard']
+        price: 24999,
+        billing_period: 'one-time',
+        features: [
+          '5-Page Responsive Modern Business Website',
+          'WhatsApp Instant Chat + Inquiry Lead Forms',
+          '1 Year High-Speed NVMe Hosting & SSL Certificate',
+          'Full On-Page Technical SEO & Schema Included',
+          'Delivered Within 5 Business Days'
+        ]
       },
       {
         id: 'p-302',
         service_id: 'srv-3',
         plan_name: 'Growth',
-        price: 24999,
-        billing_period: 'monthly',
-        features: ['Google Search + Shopping + Display Ads', 'Conversion Tracking & Pixel Setup', 'Up to ₹2 Lakh Ad Budget Management', 'Custom High-Converting Landing Page', 'A/B Ad Creative Testing']
+        price: 49999,
+        billing_period: 'one-time',
+        features: [
+          'Up to 15 Custom Pages or E-Commerce Store (100 Products)',
+          'Razorpay / Stripe / PayU Payment Gateway Integration',
+          'Custom Client Portal & Admin CMS Dashboard',
+          '95+ Google PageSpeed Optimization Guarantee',
+          'GA4 Enhanced E-commerce & Tag Manager Tracking',
+          '30 Days Post-Launch Maintenance & Training'
+        ]
       },
       {
         id: 'p-303',
         service_id: 'srv-3',
         plan_name: 'Enterprise',
-        price: 49999,
-        billing_period: 'monthly',
-        features: ['Omnichannel PPC Strategy', 'YouTube Ads + Remarketing Funnels', 'Unlimited Ad Spend Management', 'Dedicated Performance Marketer', 'Weekly ROAS Optimization Calls']
+        price: 99999,
+        billing_period: 'one-time',
+        features: [
+          'Bespoke Web Application / SaaS / Multi-Vendor Marketplace',
+          'Custom Scalable Database Architecture & REST APIs',
+          'Dedicated Cloud VPS Deployment (cPanel / AWS / DigitalOcean)',
+          'Enterprise DDoS & WAF Firewall Security Hardening',
+          '1 Year Priority SLA Support & Maintenance Contract'
+        ]
       }
     ]
   },
   {
     id: 'srv-4',
-    category: 'Social Media',
-    title: 'Social Media Growth & Meta Ads',
-    slug: 'social-media-marketing',
-    short_desc: 'Build an engaging brand presence on Instagram, Facebook, LinkedIn with viral reels, graphics & ads.',
-    description: 'Engage your audience where they hang out. We create eye-catching social media graphics, trending Reels, community management, and targeted Instagram & Meta lead generation ads.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
-    icon: 'Share2',
+    category: 'PPC / Ads',
+    title: 'Google Ads & High-ROAS Performance Marketing',
+    slug: 'google-ads-ppc-marketing',
+    short_desc: 'Stop wasting ad spend. Maximize Return on Ad Spend (ROAS) with hyper-targeted Google Search, Shopping, YouTube, and Performance Max campaigns.',
+    description: 'We design high-converting PPC campaigns with rigorous A/B ad creative testing, high-intent negative keyword moats, advanced conversion pixel tracking, and dedicated landing page optimization to deliver maximum lead quality.',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+    icon: 'Target',
     status: 'active',
     plans: [
       {
@@ -142,15 +200,28 @@ export const initialServices: Service[] = [
         plan_name: 'Starter',
         price: 12999,
         billing_period: 'monthly',
-        features: ['12 Custom Graphics / Month', '4 Engaging Reels Video Editing', 'Instagram & Facebook Management', 'Hashtag & Caption Strategy']
+        features: [
+          'Google Search Ads Setup & Optimization',
+          'Negative Keyword List Creation & Bid Tuning',
+          'Up to ₹50,000 Monthly Ad Budget Management',
+          'Conversion Tracking & Lead Form Integration',
+          'Monthly Transparent ROI Dashboard'
+        ]
       },
       {
         id: 'p-402',
         service_id: 'srv-4',
         plan_name: 'Growth',
-        price: 26999,
+        price: 27999,
         billing_period: 'monthly',
-        features: ['20 Custom Posts + 8 Reels', 'Meta Lead Ads Campaign Setup', 'Community & DM Response Management', 'LinkedIn Brand Building for Founders', 'Monthly Competitor Analysis']
+        features: [
+          'Google Search + Shopping + YouTube Ads',
+          'Custom High-Converting Landing Page Design Included',
+          'Up to ₹2.5 Lakh Ad Budget Management',
+          'A/B Creative & Headline Copy Split Testing',
+          'Dynamic Remarketing Funnel Setup',
+          'Bi-Weekly ROAS Optimization & Strategy Calls'
+        ]
       },
       {
         id: 'p-403',
@@ -158,44 +229,123 @@ export const initialServices: Service[] = [
         plan_name: 'Enterprise',
         price: 54999,
         billing_period: 'monthly',
-        features: ['Daily Content (30 Posts + 15 Reels)', 'Full Influencer Marketing Strategy', 'Advanced Retargeting Meta Ads', 'Dedicated Graphic Designer & Copywriter', 'Brand Reputation Management']
+        features: [
+          'Omnichannel Performance Max (PMax) Architecture',
+          'Unlimited Monthly Ad Spend Management',
+          'Advanced CRM Offline Conversion Import (Sales Sync)',
+          'Dedicated Certified Google Ads Performance Lead',
+          'Weekly Live Scaling & Attribution Calls'
+        ]
       }
     ]
   },
   {
     id: 'srv-5',
-    category: 'Hosting & Deployment',
-    title: 'Cloud Hosting, cPanel & VPS Deployment',
-    slug: 'cloud-hosting-deployment',
-    short_desc: 'Secure, lightning-fast web deployment on cPanel, LiteSpeed, AWS, or DigitalOcean with zero downtime.',
-    description: 'We manage your infrastructure so you can focus on growing. Complete domain setup, SSL certificates, SMTP mail server configuration, automated daily backups, and cPanel/VPS server hardening.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-    icon: 'Server',
+    category: 'Social Media',
+    title: 'Social Media Growth, Meta Ads & Viral Reels',
+    slug: 'social-media-marketing-reels',
+    short_desc: 'Build an authoritative brand presence on Instagram, Facebook, and LinkedIn with trending 4K Reels, lead-generation ad funnels, and community engagement.',
+    description: 'Transform social media from vanity metrics into revenue. We produce eye-catching carousel designs, viral video Reels/Shorts editing, founder brand building on LinkedIn, and high-converting Meta lead generation ads.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
+    icon: 'Share2',
     status: 'active',
     plans: [
       {
         id: 'p-501',
         service_id: 'srv-5',
         plan_name: 'Starter',
-        price: 4999,
-        billing_period: 'yearly',
-        features: ['1 Website Hosting on LiteSpeed cPanel', 'Free SSL & Business Email Accounts', '10GB NVMe SSD Storage', 'Automated Weekly Backups', '99.9% Uptime SLA']
+        price: 14999,
+        billing_period: 'monthly',
+        features: [
+          '12 Custom High-Engagement Brand Graphics',
+          '4 High-Converting Edited 4K Reels / Shorts',
+          'Instagram & Facebook Complete Management',
+          'Hashtag & Caption SEO Strategy',
+          'Monthly Growth & Impressions Report'
+        ]
       },
       {
         id: 'p-502',
         service_id: 'srv-5',
         plan_name: 'Growth',
-        price: 11999,
-        billing_period: 'yearly',
-        features: ['Host Unlimited Websites', '50GB NVMe SSD Storage', 'Custom Socket SMTP Setup for Mail', 'Daily Offsite Backups', 'Free Migration from Old Host']
+        price: 29999,
+        billing_period: 'monthly',
+        features: [
+          '20 Custom Brand Posts + 8 Engaging Reels',
+          'Meta Lead Generation Ads Campaign Management',
+          'Community Direct Message (DM) & Comment Response',
+          'LinkedIn Thought-Leadership Branding for Founders',
+          'Monthly Competitor Content Benchmark Analysis'
+        ]
       },
       {
         id: 'p-503',
         service_id: 'srv-5',
         plan_name: 'Enterprise',
+        price: 59999,
+        billing_period: 'monthly',
+        features: [
+          'Daily Active Content (30 Posts + 15 Viral Reels / Shorts)',
+          'Full Influencer Outreach & Collaboration Management',
+          'Advanced Omnichannel Retargeting Meta Funnels',
+          'Dedicated Graphic Designer, Video Editor & Copywriter Team',
+          'Brand Reputation & Crisis Management'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'srv-6',
+    category: 'Hosting & Deployment',
+    title: 'Cloud Infrastructure, cPanel & VPS Hardening',
+    slug: 'cloud-hosting-vps-deployment',
+    short_desc: 'Ultra-secure, lightning-fast web deployment on LiteSpeed cPanel, AWS, or DigitalOcean with zero downtime, SSL, and automated off-site backups.',
+    description: 'We take complete care of your digital infrastructure so your website never crashes. Complete domain DNS configuration, business SMTP email server setup, LiteSpeed cache acceleration, automated off-site daily backups, and malware protection.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+    icon: 'Server',
+    status: 'active',
+    plans: [
+      {
+        id: 'p-601',
+        service_id: 'srv-6',
+        plan_name: 'Starter',
+        price: 4999,
+        billing_period: 'yearly',
+        features: [
+          '1 Website on LiteSpeed Enterprise cPanel Hosting',
+          'Free AutoSSL & Unlimited Corporate Email Accounts',
+          '15GB High-Speed NVMe SSD Storage',
+          'Automated Weekly Off-Site Cloud Backups',
+          '99.9% Uptime SLA Guarantee'
+        ]
+      },
+      {
+        id: 'p-602',
+        service_id: 'srv-6',
+        plan_name: 'Growth',
+        price: 11999,
+        billing_period: 'yearly',
+        features: [
+          'Host Unlimited Websites with Unlimited Bandwidth',
+          '75GB NVMe SSD High-Speed Storage',
+          'Custom Socket SMTP Setup for 100% Inbox Delivery',
+          'Daily Automated Off-Site Backups & 1-Click Restore',
+          'Free White-Glove Migration from Previous Host'
+        ]
+      },
+      {
+        id: 'p-603',
+        service_id: 'srv-6',
+        plan_name: 'Enterprise',
         price: 24999,
         billing_period: 'yearly',
-        features: ['Managed AWS / DigitalOcean Dedicated VPS', 'Root Access & cPanel / WHM License', 'Cloudflare Enterprise CDN Setup', '24/7 DevOps Server Monitoring', 'Proactive Malware Scanning & Cleanup']
+        features: [
+          'Dedicated Managed AWS / DigitalOcean Cloud VPS',
+          'Full Root Access & cPanel / WHM License Included',
+          'Cloudflare Enterprise Edge CDN & DDoS Defense',
+          '24/7 DevOps Server Health Monitoring',
+          'Proactive Kernel Hardening & Real-Time Malware Shield'
+        ]
       }
     ]
   }
@@ -396,8 +546,8 @@ export const initialUsers: User[] = [
   {
     id: 'usr-admin-1',
     name: 'Bharat Admin',
-    email: 'admin@bharatseo.in',
-    phone: '+91 98765 00000',
+    email: 'ceo@bharatseo.site',
+    phone: '+91 95208 68276',
     role: 'admin',
     status: 'active',
     created_at: '2026-01-01'

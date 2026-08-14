@@ -4,9 +4,9 @@ require_once __DIR__ . '/config.php';
 $site_name = get_setting($pdo, 'site_name', 'Bharat SEO');
 $agency_tagline = get_setting($pdo, 'agency_tagline', 'Empowering Indian & Global Businesses with Data-Driven Digital Growth');
 $office_address = get_setting($pdo, 'office_address', 'Bharat Tower, Connaught Place, New Delhi 110001');
-$contact_phone = get_setting($pdo, 'contact_phone', '+91 98765 43210');
-$contact_email = get_setting($pdo, 'contact_email', 'contact@bharatseo.in');
-$whatsapp_number = get_setting($pdo, 'whatsapp_number', '919876543210');
+$contact_phone = get_setting($pdo, 'contact_phone', '+91 95208 68276');
+$contact_email = get_setting($pdo, 'contact_email', 'ceo@bharatseo.site');
+$whatsapp_number = get_setting($pdo, 'whatsapp_number', '919520868276');
 ?>
 <!-- Footer -->
 <footer class="bg-[#1A237E] text-slate-200 text-xs mt-16 border-t-4 border-[#FF9933]">

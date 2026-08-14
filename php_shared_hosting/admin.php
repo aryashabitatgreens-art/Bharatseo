@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/header.php';
+require_once __DIR__ . '/config.php';
 
 if (!is_logged_in() || !is_admin()) {
     header("Location: login.php");
+    echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
@@ -34,6 +35,8 @@ if ($pdo) {
     $o_stmt = $pdo->query("SELECT o.*, u.name as user_name, u.email as user_email, s.title as service_title FROM orders o JOIN users u ON o.user_id = u.id JOIN services s ON o.service_id = s.id ORDER BY o.id DESC");
     $orders = $o_stmt->fetchAll();
 }
+
+require_once __DIR__ . '/header.php';
 ?>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">

@@ -505,7 +505,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = () => {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. 919876543210"
+                      placeholder="e.g. 919520868276"
                       value={settingsForm.whatsapp_number}
                       onChange={(e) => setSettingsForm({ ...settingsForm, whatsapp_number: e.target.value })}
                       className="w-full bg-white border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:border-[#FF9933]"

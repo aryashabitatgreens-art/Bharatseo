@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
           </div>
           <div>
             <label class="block font-semibold text-slate-700 mb-1">Mobile Phone *</label>
-            <input type="text" name="phone" required placeholder="+91 98765 43210" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:outline-none focus:border-[#FF9933]">
+            <input type="text" name="phone" required placeholder="+91 95208 68276" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 focus:outline-none focus:border-[#FF9933]">
           </div>
         </div>
 

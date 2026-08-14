@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/header.php';
+require_once __DIR__ . '/config.php';
 
 if (!is_logged_in()) {
     header("Location: login.php");
+    echo "<script>window.location.href='login.php';</script>";
     exit();
 }
 
@@ -14,6 +15,8 @@ if ($pdo) {
     $stmt->execute([$user['id']]);
     $user_orders = $stmt->fetchAll();
 }
+
+require_once __DIR__ . '/header.php';
 ?>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
